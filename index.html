@@ -1,1 +1,487 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kripto Alım Satım Platformu | Bitcoin Al, Ethereum, Altcoin, DeFi, Kickstarter | MEXC</title>
+    <link rel="icon" type="image/svg+xml" href="https://www.mexc.com/favicon.ico">
+    <style>
+        :root {
+            --bg-main: #0b0e11;
+            --bg-card: #141a21;
+            --bg-card-hover: #1c2530;
+            --mexc-yellow: #fcd535;
+            --mexc-yellow-hover: #f0c419;
+            --text-main: #eaecef;
+            --text-muted: #848e9c;
+            --border-color: #22303c;
+            --green: #0ecb81;
+            --red: #f6465d;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+        }
+
+        /* Top Notification Bar */
+        .announcement-bar {
+            background-color: #1e2329;
+            color: var(--text-muted);
+            font-size: 13px;
+            padding: 8px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .announcement-bar span {
+            color: var(--mexc-yellow);
+            cursor: pointer;
+        }
+
+        /* Header / Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 32px;
+            height: 64px;
+            background-color: var(--bg-main);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .logo span {
+            color: var(--mexc-yellow);
+        }
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        nav a:hover, nav a.active {
+            color: var(--text-main);
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .btn-login {
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 8px 12px;
+        }
+        .btn-signup {
+            background-color: var(--mexc-yellow);
+            color: #000;
+            border: none;
+            padding: 9px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+        .btn-signup:hover {
+            background-color: var(--mexc-yellow-hover);
+        }
+
+        /* Hero Banner Section */
+        .hero {
+            text-align: center;
+            padding: 70px 20px 50px 20px;
+            background: radial-gradient(circle at 50% 10%, #1a2332 0%, var(--bg-main) 70%);
+        }
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+        .hero p {
+            color: var(--text-muted);
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+        .signup-box {
+            max-width: 480px;
+            margin: 0 auto;
+            display: flex;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            overflow: hidden;
+            padding: 6px;
+        }
+        .signup-box input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 10px 14px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+        }
+        .signup-box button {
+            background: var(--mexc-yellow);
+            border: none;
+            color: #000;
+            padding: 0 24px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Markets Layout Container */
+        .markets-container {
+            max-width: 1240px;
+            margin: 20px auto 60px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2.2fr 1fr;
+            gap: 24px;
+        }
+        @media(max-width: 960px) {
+            .markets-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+        }
+        
+        /* Tabs Styling */
+        .tabs {
+            display: flex;
+            gap: 24px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 14px;
+            margin-bottom: 16px;
+        }
+        .tab-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 0;
+            position: relative;
+        }
+        .tab-btn.active {
+            color: var(--text-main);
+        }
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--mexc-yellow);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Crypto Tables */
+        .crypto-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .crypto-table th {
+            text-align: left;
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 500;
+            padding-bottom: 14px;
+        }
+        .crypto-table td {
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            font-size: 14px;
+        }
+        .coin-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: #fff;
+        }
+        .tag-futures {
+            background: rgba(252, 213, 53, 0.1);
+            color: var(--mexc-yellow);
+            font-size: 10px;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .price-up { color: var(--green); font-weight: 600; }
+        .price-down { color: var(--red); font-weight: 600; }
+        .trade-action {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 6px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .trade-action:hover {
+            border-color: var(--mexc-yellow);
+            color: var(--mexc-yellow);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <div>📢 Welcome to MEXC! Enjoy 0% fee trading on selected spot and futures pairs. <span>Learn More</span></div>
+        <div>🌐 English / USD</div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <div class="logo">MEX<span>C</span></div>
+            <nav>
+                <a href="#">Buy Crypto</a>
+                <a href="#" class="active">Markets</a>
+                <a href="#">Spot</a>
+                <a href="#">Futures</a>
+                <a href="#">Earn</a>
+                <a href="#">Kickstarter</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button class="btn-login">Log In</button>
+            <button class="btn-signup">Sign Up</button>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <div class="hero">
+        <h1>Discover Your Wall Street DNA</h1>
+        <p>Test & win guaranteed rewards with industry-leading liquidity, 0% fees, and deep liquidity.</p>
+        <div class="signup-box">
+            <input type="text" placeholder="Email / Mobile Number">
+            <button>Sign Up</button>
+        </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="markets-container">
+        
+        <!-- Left Column: Markets Panel with Interactive Tabs -->
+        <div class="card">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab(event, 'hot-futures')">Hot Futures</button>
+                <button class="tab-btn" onclick="switchTab(event, 'hot-tokens')">Hot Tokens</button>
+                <button class="tab-btn" onclick="switchTab(event, 'stocks')">Stocks & TradFi</button>
+            </div>
+
+            <!-- Tab 1: Hot Futures -->
+            <div id="hot-futures" class="tab-content active">
+                <table class="crypto-table">
+                    <thead>
+                        <tr>
+                            <th>Pair</th>
+                            <th>Last Price</th>
+                            <th>24h Change</th>
+                            <th>Trade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><div class="coin-info">BTCUSDT <span class="tag-futures">500x</span></div></td>
+                            <td>86,277.4</td>
+                            <td class="price-up">+1.24%</td>
+                            <td><button class="trade-action">Trade</button></td>
+                        </tr>
+                        <tr>
+                            <td><div class="coin-info">ETHUSDT <span class="tag-futures">500x</span></div></td>
+                            <td>2,723.99</td>
+                            <td class="price-up">+0.98%</td>
+                            <td><button class="trade-action">Trade</button></td>
+                        </tr>
+                        <tr>
+                            <td><div class="coin-info">GOLD(XAU)USDT <span class="tag-futures">1000x</span></div></td>
+                            <td>4,156.13</td>
+                            <td class="price-up">+0.28%</td>
+                            <td><button class="trade-action">Trade</button></td>
+                        </tr>
+                        <tr>
+                            <td><div class="coin-info">SANDUSDT</div></td>
+                            <td>0.07278</td>
+                            <td class="price-down">-5.38%</td>
+                            <td><button class="trade-action">Trade</button></td>
+                        </tr>
+                        <tr>
+                            <td><div class="coin-info">QNTUSDT</div></td>
+                            <td>255.08</td>
+                            <td class="price-down">-0.90%</td>
+                            <td><button class="trade-action">Trade</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Tab 2: Hot Tokens -->
+            <div id="hot-tokens" class="tab-content">
+                <table class="crypto-table">
+                    <thead>
+                        <tr>
+                            <th>Pair</th>
+                            <th>Last Price</th>
+                            <th>24h Change</th>
+                            <th>Trade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><div class="coin-info">MX</div></td>
+                            <td>3.24</td>
+                            <td class="price-up">+7.12%</td>
+                            <td><button class="trade-action">Trade</button></td>
+                        </tr>
+                        <tr>
+                            <td><div class="coin-info">SOL</div></td>
+                            <td>142.10</td>
+                            <td class="price-down">-0.65%</td>
+                            <td><button class="trade-action">Trade</button></td>
+                        </tr>
+                        <tr>
+                            <td><div class="coin-info">DOGE</div></td>
+                            <td>0.1245</td>
+                            <td class="price-up">+4.15%</td>
+                            <td><button class="trade-action">Trade</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Tab 3: Stocks -->
+            <div id="stocks" class="tab-content">
+                <table class="crypto-table">
+                    <thead>
+                        <tr>
+                            <th>Pair</th>
+                            <th>Last Price</th>
+                            <th>24h Change</th>
+                            <th>Trade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><div class="coin-info">TSLAUSDT</div></td>
+                            <td>242.50</td>
+                            <td class="price-up">+2.10%</td>
+                            <td><button class="trade-action">Trade</button></td>
+                        </tr>
+                        <tr>
+                            <td><div class="coin-info">AAPLUSDT</div></td>
+                            <td>225.10</td>
+                            <td class="price-down">-0.45%</td>
+                            <td><button class="trade-action">Trade</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Right Column: Gainers Panel -->
+        <div class="card">
+            <div class="tabs">
+                <button class="tab-btn active">Spot Gainers</button>
+            </div>
+            <table class="crypto-table">
+                <thead>
+                    <tr>
+                        <th>Pair</th>
+                        <th>Last Price</th>
+                        <th>24h Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><div class="coin-info">BATONUSDT</div></td>
+                        <td>0.009884</td>
+                        <td class="price-up">+111.19%</td>
+                    </tr>
+                    <tr>
+                        <td><div class="coin-info">PUMPBTCUSDT</div></td>
+                        <td>0.01571</td>
+                        <td class="price-up">+86.35%</td>
+                    </tr>
+                    <tr>
+                        <td><div class="coin-info">FONEUSDT</div></td>
+                        <td>0.005972</td>
+                        <td class="price-up">+26.63%</td>
+                    </tr>
+                    <tr>
+                        <td><div class="coin-info">CARVUSDT</div></td>
+                        <td>0.05213</td>
+                        <td class="price-up">+15.97%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- JavaScript for Tab Switching -->
+    <script>
+        function switchTab(evt, tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.card .tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabId).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
