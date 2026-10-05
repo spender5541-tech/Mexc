@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,54 +6,113 @@
     <title>Kripto Alım Satım Platformu | Bitcoin Al, Ethereum, Altcoin, DeFi, Kickstarter | MEXC</title>
     <link rel="icon" type="image/svg+xml" href="https://www.mexc.com/favicon.ico">
     <style>
-        :root {
-            --bg-main: #0b0e11;
-            --bg-card: #141a21;
-            --bg-card-hover: #1c2530;
-            --mexc-yellow: #fcd535;
-            --mexc-yellow-hover: #f0c419;
-            --text-main: #eaecef;
-            --text-muted: #848e9c;
-            --border-color: #22303c;
-            --green: #0ecb81;
-            --red: #f6465d;
+        /* User's Exact CSS Variables & Resets */
+        li {
+            list-style: none;
         }
-        * {
-            box-sizing: border-box;
+        ul {
             margin: 0;
             padding: 0;
         }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        :root {
+            --text-primary: #f2f4f6;
+            --text-tertiary: #6e7583;
+            --divider-primary: #222429;
+            --primary-blue: #357aff;
+            --border-width-base: 1px;
+            --primary-base: #357aff;
+            --bg-modal: #18191c;
+            --fill-page-button-default: #222429;
+            --divider-secondary: #2b2e33;
+            --bg-secondary: #111214;
+            --primary-text: #959da4;
+            --down-red: #ff4761;
+            --border-style-base: 1px;
+            --text-secondary: #87909f;
+            --tabs-title-height-sm: 40px;
+            --tabs-title-font-size-sm: 14px;
+            --bg-primary: #0d0e0f;
+            --up-rate: #0aa869;
+            --down-rate: #fe445c;
+            --bg-1: #4b4e52;
+            --text-tooltip-secondary: #505152;
+            --scrollbar-track: #35383f;
+            --fill-menu-selected: #222429;
+            --divider: #1e1f20;
+            --modal-content-bg: #fff;
+            --modal-border-radius: 8px;
+            --modal-header-close-size: 60px;
+            --font-size-lg: 16px;
+            --modal-close-color: #87909f;
+            --bg-tertiary: #111421;
+            --title: #151617;
+            --bg-2: #edeff1;
+            --border-card: #e2e5e7;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text-primary);
+        }
         body {
+            overflow-x: hidden;
+            background-color: var(--bg-secondary);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-main);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+        }
+        body.dark-mode {
+            --bg-secondary: #111214;
+            --bg-secondary1: #0d0f18;
+            --text-primary: #f2f4f6;
+            --home-community-gradient-color: rgba(13,15,24,.85);
+            --btn-default-color: #f2f4f6;
+            --divider-primary: #222429;
+            --bg-modal: #18191c;
+            --bg-primary: #0d0e0f;
+            --border-button: #2f3133;
+            --bg-tertiary: #111421;
+            --fill-tab-tertiary: #222429;
+            --bg-level-primary: #0d0e0f;
+            --fill-page-button-default: #222429;
+            --divider-modal-primary: #2f3238;
+            --border-card: #282a2c;
+            --bg-primary1: #080a11;
+            --title: #fff;
+            --fill-card-modal: #222429;
+            --fill-sidebar-selected: #18191c;
+            --tint-orange-smooth: #361b06;
         }
 
-        /* Top Notification Bar */
+        /* Layout Component Styling */
         .announcement-bar {
-            background-color: #1e2329;
-            color: var(--text-muted);
+            background-color: var(--bg-tertiary);
+            color: var(--text-secondary);
             font-size: 13px;
             padding: 8px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: var(--border-width-base) solid var(--divider-primary);
         }
         .announcement-bar span {
-            color: var(--mexc-yellow);
+            color: #fcd535;
             cursor: pointer;
         }
-
-        /* Header / Navigation */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 32px;
             height: 64px;
-            background-color: var(--bg-main);
-            border-bottom: 1px solid var(--border-color);
+            background-color: var(--bg-primary);
+            border-bottom: var(--border-width-base) solid var(--divider-primary);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -67,28 +125,24 @@
         .logo {
             font-size: 24px;
             font-weight: 900;
-            color: #ffffff;
+            color: var(--text-primary);
             letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
         }
         .logo span {
-            color: var(--mexc-yellow);
+            color: #fcd535;
         }
         nav {
             display: flex;
             gap: 24px;
         }
         nav a {
-            color: var(--text-muted);
-            text-decoration: none;
+            color: var(--text-secondary);
             font-size: 14px;
             font-weight: 500;
             transition: color 0.2s;
         }
         nav a:hover, nav a.active {
-            color: var(--text-main);
+            color: var(--text-primary);
         }
         .header-right {
             display: flex;
@@ -98,14 +152,14 @@
         .btn-login {
             background: transparent;
             border: none;
-            color: var(--text-main);
+            color: var(--text-primary);
             font-weight: 600;
             cursor: pointer;
             font-size: 14px;
             padding: 8px 12px;
         }
         .btn-signup {
-            background-color: var(--mexc-yellow);
+            background-color: #fcd535;
             color: #000;
             border: none;
             padding: 9px 20px;
@@ -113,26 +167,19 @@
             font-weight: 600;
             cursor: pointer;
             font-size: 14px;
-            transition: background 0.2s;
         }
-        .btn-signup:hover {
-            background-color: var(--mexc-yellow-hover);
-        }
-
-        /* Hero Banner Section */
         .hero {
             text-align: center;
             padding: 70px 20px 50px 20px;
-            background: radial-gradient(circle at 50% 10%, #1a2332 0%, var(--bg-main) 70%);
+            background: radial-gradient(circle at 50% 10%, var(--bg-tertiary) 0%, var(--bg-secondary) 70%);
         }
         .hero h1 {
             font-size: 42px;
             font-weight: 800;
             margin-bottom: 12px;
-            color: #fff;
         }
         .hero p {
-            color: var(--text-muted);
+            color: var(--text-secondary);
             font-size: 16px;
             margin-bottom: 30px;
         }
@@ -140,8 +187,8 @@
             max-width: 480px;
             margin: 0 auto;
             display: flex;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
+            background: var(--bg-primary);
+            border: var(--border-width-base) solid var(--divider-primary);
             border-radius: 6px;
             overflow: hidden;
             padding: 6px;
@@ -151,12 +198,12 @@
             background: transparent;
             border: none;
             padding: 10px 14px;
-            color: #fff;
+            color: var(--text-primary);
             font-size: 14px;
             outline: none;
         }
         .signup-box button {
-            background: var(--mexc-yellow);
+            background: #fcd535;
             border: none;
             color: #000;
             padding: 0 24px;
@@ -164,8 +211,6 @@
             border-radius: 4px;
             cursor: pointer;
         }
-
-        /* Markets Layout Container */
         .markets-container {
             max-width: 1240px;
             margin: 20px auto 60px auto;
@@ -175,69 +220,50 @@
             gap: 24px;
         }
         @media(max-width: 960px) {
-            .markets-container {
-                grid-template-columns: 1fr;
-            }
+            .markets-container { grid-template-columns: 1fr; }
         }
         .card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
+            background-color: var(--bg-primary);
+            border: var(--border-width-base) solid var(--border-card);
+            border-radius: var(--modal-border-radius);
             padding: 24px;
         }
-        
-        /* Tabs Styling */
         .tabs {
             display: flex;
             gap: 24px;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: var(--border-width-base) solid var(--divider-primary);
             padding-bottom: 14px;
             margin-bottom: 16px;
         }
         .tab-btn {
             background: none;
             border: none;
-            color: var(--text-muted);
+            color: var(--text-secondary);
             cursor: pointer;
-            font-size: 16px;
+            font-size: var(--tabs-title-font-size-sm);
             font-weight: 600;
             padding: 0;
             position: relative;
         }
         .tab-btn.active {
-            color: var(--text-main);
+            color: var(--text-primary);
         }
-        .tab-btn.active::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: var(--mexc-yellow);
-        }
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Crypto Tables */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
         .crypto-table {
             width: 100%;
             border-collapse: collapse;
         }
         .crypto-table th {
             text-align: left;
-            color: var(--text-muted);
+            color: var(--text-secondary);
             font-size: 12px;
             font-weight: 500;
             padding-bottom: 14px;
         }
         .crypto-table td {
             padding: 14px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.03);
+            border-bottom: var(--border-width-base) solid var(--divider-primary);
             font-size: 14px;
         }
         .coin-info {
@@ -245,43 +271,36 @@
             align-items: center;
             gap: 8px;
             font-weight: 600;
-            color: #fff;
+            color: var(--text-primary);
         }
         .tag-futures {
             background: rgba(252, 213, 53, 0.1);
-            color: var(--mexc-yellow);
+            color: #fcd535;
             font-size: 10px;
             padding: 2px 5px;
             border-radius: 3px;
         }
-        .price-up { color: var(--green); font-weight: 600; }
-        .price-down { color: var(--red); font-weight: 600; }
+        .price-up { color: var(--up-rate); font-weight: 600; }
+        .price-down { color: var(--down-rate); font-weight: 600; }
         .trade-action {
-            background: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
+            background: var(--fill-page-button-default);
+            border: var(--border-width-base) solid var(--divider-primary);
+            color: var(--text-primary);
             padding: 6px 16px;
             border-radius: 4px;
             cursor: pointer;
             font-size: 12px;
             font-weight: 600;
-            transition: all 0.2s;
-        }
-        .trade-action:hover {
-            border-color: var(--mexc-yellow);
-            color: var(--mexc-yellow);
         }
     </style>
 </head>
-<body>
+<body class="dark-mode">
 
-    <!-- Announcement Bar -->
     <div class="announcement-bar">
         <div>📢 Welcome to MEXC! Enjoy 0% fee trading on selected spot and futures pairs. <span>Learn More</span></div>
         <div>🌐 English / USD</div>
     </div>
 
-    <!-- Header -->
     <header>
         <div class="header-left">
             <div class="logo">MEX<span>C</span></div>
@@ -300,7 +319,6 @@
         </div>
     </header>
 
-    <!-- Hero Banner -->
     <div class="hero">
         <h1>Discover Your Wall Street DNA</h1>
         <p>Test & win guaranteed rewards with industry-leading liquidity, 0% fees, and deep liquidity.</p>
@@ -310,10 +328,7 @@
         </div>
     </div>
 
-    <!-- Main Content Grid -->
     <div class="markets-container">
-        
-        <!-- Left Column: Markets Panel with Interactive Tabs -->
         <div class="card">
             <div class="tabs">
                 <button class="tab-btn active" onclick="switchTab(event, 'hot-futures')">Hot Futures</button>
@@ -321,7 +336,6 @@
                 <button class="tab-btn" onclick="switchTab(event, 'stocks')">Stocks & TradFi</button>
             </div>
 
-            <!-- Tab 1: Hot Futures -->
             <div id="hot-futures" class="tab-content active">
                 <table class="crypto-table">
                     <thead>
@@ -351,23 +365,10 @@
                             <td class="price-up">+0.28%</td>
                             <td><button class="trade-action">Trade</button></td>
                         </tr>
-                        <tr>
-                            <td><div class="coin-info">SANDUSDT</div></td>
-                            <td>0.07278</td>
-                            <td class="price-down">-5.38%</td>
-                            <td><button class="trade-action">Trade</button></td>
-                        </tr>
-                        <tr>
-                            <td><div class="coin-info">QNTUSDT</div></td>
-                            <td>255.08</td>
-                            <td class="price-down">-0.90%</td>
-                            <td><button class="trade-action">Trade</button></td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
 
-            <!-- Tab 2: Hot Tokens -->
             <div id="hot-tokens" class="tab-content">
                 <table class="crypto-table">
                     <thead>
@@ -391,17 +392,10 @@
                             <td class="price-down">-0.65%</td>
                             <td><button class="trade-action">Trade</button></td>
                         </tr>
-                        <tr>
-                            <td><div class="coin-info">DOGE</div></td>
-                            <td>0.1245</td>
-                            <td class="price-up">+4.15%</td>
-                            <td><button class="trade-action">Trade</button></td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
 
-            <!-- Tab 3: Stocks -->
             <div id="stocks" class="tab-content">
                 <table class="crypto-table">
                     <thead>
@@ -419,18 +413,11 @@
                             <td class="price-up">+2.10%</td>
                             <td><button class="trade-action">Trade</button></td>
                         </tr>
-                        <tr>
-                            <td><div class="coin-info">AAPLUSDT</div></td>
-                            <td>225.10</td>
-                            <td class="price-down">-0.45%</td>
-                            <td><button class="trade-action">Trade</button></td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- Right Column: Gainers Panel -->
         <div class="card">
             <div class="tabs">
                 <button class="tab-btn active">Spot Gainers</button>
@@ -454,31 +441,15 @@
                         <td>0.01571</td>
                         <td class="price-up">+86.35%</td>
                     </tr>
-                    <tr>
-                        <td><div class="coin-info">FONEUSDT</div></td>
-                        <td>0.005972</td>
-                        <td class="price-up">+26.63%</td>
-                    </tr>
-                    <tr>
-                        <td><div class="coin-info">CARVUSDT</div></td>
-                        <td>0.05213</td>
-                        <td class="price-up">+15.97%</td>
-                    </tr>
                 </tbody>
             </table>
         </div>
-
     </div>
 
-    <!-- JavaScript for Tab Switching -->
     <script>
         function switchTab(evt, tabId) {
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => content.classList.remove('active'));
-
-            const buttons = document.querySelectorAll('.card .tab-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
             evt.currentTarget.classList.add('active');
         }
